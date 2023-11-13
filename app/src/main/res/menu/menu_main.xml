@@ -4,8 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
+        android:id="@+id/menu_main_delete"
+        android:title="삭제"
+        app:showAsAction="always"/>
+
+
+    <item
         android:id="@+id/menu_main_setting"
         android:title="설정"
-        app:showAsAction="always"
-        />
+        app:showAsAction="always" />
 </menu>

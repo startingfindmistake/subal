@@ -15,6 +15,15 @@ class DBHelper(context: Context): SQLiteOpenHelper(context, "testdb", null, 1) {
                 "todo not null)")
     }
 
+
+    //데이터를 삭제하는 메소드를 추가
+    fun deleteData(id: Int) {
+        val db = this.writableDatabase
+        db.delete("TODO_TB", "_id=koko", arrayOf(id.toString()))
+        db.close()
+    }
+
+
     //데이터 베이스가 업그레이드될 때 호출되는 메소드
     override fun onUpgrade(p0: SQLiteDatabase?, p1: Int, p2: Int) {
         //현재는 특별히 수행할 동작 없음....

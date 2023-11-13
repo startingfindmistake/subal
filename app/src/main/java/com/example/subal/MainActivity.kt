@@ -73,11 +73,25 @@ class MainActivity : AppCompatActivity() {
 
     //옵션 메뉴의 항목 선택 호출, 선택된 항목에 따라 적절한 동작 수행
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        if(item.itemId===R.id.menu_main_setting){
-            val intent = Intent(this, setting::class.java)
-            startActivity(intent)
+        return when (item.itemId) {
+            R.id.menu_main_setting -> {
+                val intent = Intent(this, setting::class.java)
+                startActivity(intent)
+                true
+            }
+            R.id.menu_main_delete -> {
+
+                //HBHelper 인스턴스 생성
+                val dbHelper = DBHelper(this)
+                val koko = 1
+
+                //데이터 삭제
+                dbHelper.deleteData(koko)
+
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
-        return super.onOptionsItemSelected(item)
     }
 
 }
